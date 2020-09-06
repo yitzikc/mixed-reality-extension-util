@@ -1,0 +1,57 @@
+{
+  "name": "mixed-reality-extension-util",
+  "version": "0.1.0",
+  "description": "Utilities to help using Microsoft's Mixed Reality Extension SDK",
+  "type": "module",
+  "files": ["lib/**/*"],
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yitzikc/mixed-reality-extension-util.git"
+  },
+  "keywords": [
+    "Microsoft",
+    "Mixed Reality",
+    "Virtual Reality",
+    "extension",
+    "SDK",
+    "Utilities"
+  ],
+  "author": "Isac Casapu",
+  "license": "LGPL-2.1-or-later",
+  "bugs": {
+    "url": "https://github.com/yitzikc/mixed-reality-extension-util/issues"
+  },
+  "homepage": "https://github.com/yitzikc/mixed-reality-extension-util#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.13",
+    "@types/lodash": "^4.14.161",
+    "@types/restify": "^8.4.2",
+    "@types/semver": "^7.3.3",
+    "@types/ws": "^7.2.6",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "^3.9.0",
+    "eslint": "^7.6.0",
+    "jest": "^26.4.2",
+    "prettier": "^2.1.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "@microsoft/mixed-reality-extension-sdk": "^0.20.0",
+    "lodash": "^4.17.20"
+  }
+}
