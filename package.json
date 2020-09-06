@@ -3,11 +3,13 @@
   "version": "0.1.0",
   "description": "Utilities to help using Microsoft's Mixed Reality Extension SDK",
   "type": "module",
-  "files": ["lib/**/*"],
+  "files": [
+    "lib/**/*"
+  ],
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --config jestconfig.json",
     "build": "tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
@@ -46,6 +48,7 @@
     "eslint": "^7.6.0",
     "jest": "^26.4.2",
     "prettier": "^2.1.1",
+    "ts-jest": "^26.3.0",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.0.2"
