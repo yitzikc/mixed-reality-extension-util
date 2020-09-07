@@ -1,6 +1,9 @@
-import { getParameterLastValue } from '..';
+import {
+    getParameterLastValue,
+    getBooleanOption
+} from '..';
 
-test('test-get-last-parameter', () => {
+test('test get-last-parameter', () => {
     expect(getParameterLastValue({
         im: '1.jpg',
         vi: '4'
@@ -24,5 +27,47 @@ test('test-get-last-parameter', () => {
         im: ['1.jpg', 'other.jpg'],
         vi: '44'
     }, 'im', 'default.jpg')).toBe('other.jpg');
+
+});
+
+test('test get boolean option', () => {
+    [
+        "Yes",
+        "Y",
+        "yesssss",
+        "yes!   ",
+        "y     ",
+        "y"
+    ].forEach((value) => {
+        const params = {
+            various: [ "this", "and", "that" ],
+            Boolean: value
+        }
+        expect(getBooleanOption(params, "Boolean")).toBe(true);
+    }, "Yes explicitly given");
+
+    [
+        "No",
+        "n",
+        "no!!!!",
+        "no   ",
+        "N     ",
+        "maybe"
+    ].forEach((value) => {
+        const params = {
+            various: [ "this", "and", "that" ],
+            Boolean: value
+        }
+        expect(getBooleanOption(params, "Boolean")).toBe(false);
+    });
+
+    expect(getBooleanOption({
+        other: "whatever"
+    }, "Boolean", true)).toBe(true);
+
+    // The options are case sensitive
+    expect(getBooleanOption({
+        "boolean": "Y"
+    }, "Boolean", false)).toBe(false);
 
 });
