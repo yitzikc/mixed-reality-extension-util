@@ -1,6 +1,8 @@
 import { castArray, last } from 'lodash';
 import { ParameterSet, Color3, Color4 } from '@microsoft/mixed-reality-extension-sdk';
 
+const toBoolean = require('to-boolean') as (_: any) => boolean; // tslint:disable-line
+
 // Get the last of potentially multiple values of a parameter in an MRE parameter set
 export function getParameterLastValue(params: ParameterSet, name: string, dflValue: string = ''): string {
   return <string> last(castArray(params[name] ?? dflValue));
@@ -9,7 +11,8 @@ export function getParameterLastValue(params: ParameterSet, name: string, dflVal
 // Get the value of a boolean parameter whose value can be 'y' or 'n'
 export function getBooleanOption(params: ParameterSet, name: string, dfl = false): boolean {
   const assumeIfNotGiven = dfl ? 'y' : 'n';
-  return getParameterLastValue(params, name, assumeIfNotGiven)[0].toLowerCase() === 'y';
+  const textValue = getParameterLastValue(params, name, assumeIfNotGiven).trim() || assumeIfNotGiven;
+  return toBoolean(textValue);
 }
 
 // Get a 3 or 4-channel colour from an option

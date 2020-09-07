@@ -55,6 +55,7 @@
   },
   "dependencies": {
     "@microsoft/mixed-reality-extension-sdk": "^0.20.0",
-    "lodash": "^4.17.20"
+    "lodash": "^4.17.20",
+    "to-boolean": "^1.0.0"
   }
 }

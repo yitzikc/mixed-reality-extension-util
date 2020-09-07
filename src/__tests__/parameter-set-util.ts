@@ -34,10 +34,10 @@ test('test get boolean option', () => {
     [
         "Yes",
         "Y",
-        "yesssss",
-        "yes!   ",
-        "y     ",
-        "y"
+        "true",
+        "yes   ",
+        "  TRUE   ",
+        "1"
     ].forEach((value) => {
         const params = {
             various: [ "this", "and", "that" ],
@@ -49,10 +49,12 @@ test('test get boolean option', () => {
     [
         "No",
         "n",
-        "no!!!!",
+        "False",
         "no   ",
-        "N     ",
-        "maybe"
+        "false   ",
+        "maybe",
+        "0",
+        "   FALSE"
     ].forEach((value) => {
         const params = {
             various: [ "this", "and", "that" ],
@@ -63,6 +65,11 @@ test('test get boolean option', () => {
 
     expect(getBooleanOption({
         other: "whatever"
+    }, "Boolean", true)).toBe(true);
+
+    expect(getBooleanOption({
+        other: "whatever",
+        Boolean: ""
     }, "Boolean", true)).toBe(true);
 
     // The options are case sensitive
