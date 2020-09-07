@@ -5,7 +5,7 @@ const toBoolean = require('to-boolean') as (_: any) => boolean; // tslint:disabl
 
 // Get the last of potentially multiple values of a parameter in an MRE parameter set
 export function getParameterLastValue(params: ParameterSet, name: string, dflValue: string = ''): string {
-  return <string> last(castArray(params[name] ?? dflValue));
+  return last(castArray(params[name] ?? dflValue)) as string;
 }
 
 // Get the value of a boolean parameter whose value can be 'y' or 'n'
