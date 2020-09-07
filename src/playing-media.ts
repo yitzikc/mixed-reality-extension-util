@@ -55,7 +55,7 @@ export class PlayingMedia {
     if (!isNil(currentVolume)) {
       const amplificationFactor = (100 + byPercent) / 100.0;
       const newVolume = clamp(currentVolume * amplificationFactor, 0, 1);
-      log.debug(loggingFacility, 'Set volume to:', newVolume);
+      log.debug(loggingFacility, 'Change volume from %f to: %f', currentVolume, newVolume);
       this.setState({ volume: newVolume });
     }
     return;
