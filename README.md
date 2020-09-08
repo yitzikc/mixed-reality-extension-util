@@ -3,6 +3,8 @@
 Utilities to help developing Node.JS applications which integrate with virtual worlds
 using [Microsoft's Mixed Reality Extension SDK](https://www.npmjs.com/package/@microsoft/mixed-reality-extension-sdk).
 
+*CI status:* [![Build Status](https://travis-ci.org/yitzikc/mixed-reality-extension-util.svg?branch=master)](https://travis-ci.org/yitzikc/mixed-reality-extension-util)
+
 ## Parameter-set Util
 
 Utility functions for reading arguments passed to the application via query parameters. Examples:
