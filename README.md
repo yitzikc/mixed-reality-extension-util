@@ -14,6 +14,9 @@ const soundFilePath = getParameterLastValue(params, 'sf', 'alarm.ogg');
 // Get a string argument, with the default ''
 const name  = getParameterLastValue(params, 'name');
 
+// Get all the instances of a parameter as an array
+const users = getParameterAllValues(params, 'user'))
+
 // Get a boolean parameter, defaulting to true
 const modsOnly = getBooleanOption(params, 'mo', true);
 

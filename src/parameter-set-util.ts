@@ -8,6 +8,11 @@ export function getParameterLastValue(params: ParameterSet, name: string, dflVal
   return last(castArray(params[name] ?? dflValue)) as string;
 }
 
+// Get all the values of a parameter in an MRE parameter set
+export function getParameterAllValues(params: ParameterSet, name: string): Array<string> {
+  return castArray(params[name] ?? []);
+}
+
 // Get the value of a boolean parameter whose value can be 'y' or 'n'
 export function getBooleanOption(params: ParameterSet, name: string, dfl = false): boolean {
   const assumeIfNotGiven = dfl ? 'y' : 'n';

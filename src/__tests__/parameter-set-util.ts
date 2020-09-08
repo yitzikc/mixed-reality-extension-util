@@ -1,5 +1,6 @@
 import {
     getParameterLastValue,
+    getParameterAllValues,
     getBooleanOption
 } from '..';
 
@@ -28,6 +29,17 @@ test('test get-last-parameter', () => {
         vi: '44'
     }, 'im', 'default.jpg')).toBe('other.jpg');
 
+});
+
+test('get parameter all values', () => {
+    const params = {
+        a: "asdf",
+        b: ["one", "two"]
+    };
+
+    expect(getParameterAllValues(params, "a")).toStrictEqual(["asdf"]); 
+    expect(getParameterAllValues(params, "b")).toStrictEqual(["one", "two"]);
+    expect(getParameterAllValues(params, "p")).toStrictEqual([]);   
 });
 
 test('test get boolean option', () => {
