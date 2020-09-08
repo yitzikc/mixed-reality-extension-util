@@ -9,7 +9,7 @@ export function getParameterLastValue(params: ParameterSet, name: string, dflVal
 }
 
 // Get all the values of a parameter in an MRE parameter set
-export function getParameterAllValues(params: ParameterSet, name: string): Array<string> {
+export function getParameterAllValues(params: ParameterSet, name: string): string[] {
   return castArray(params[name] ?? []);
 }
 
