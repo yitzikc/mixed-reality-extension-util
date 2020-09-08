@@ -3,20 +3,26 @@
 Utilities to help developing Node.JS applications which integrate with virtual worlds
 using [Microsoft's Mixed Reality Extension SDK](https://www.npmjs.com/package/@microsoft/mixed-reality-extension-sdk).
 
-*CI status:* [![Build Status](https://travis-ci.org/yitzikc/mixed-reality-extension-util.svg?branch=master)](https://travis-ci.org/yitzikc/mixed-reality-extension-util)
+**CI status:** [![Build Status](https://travis-ci.org/yitzikc/mixed-reality-extension-util.svg?branch=master)](https://travis-ci.org/yitzikc/mixed-reality-extension-util)
 
-## Parameter-set Util
+## Quick Start
+
+The library comprises several distinct modules
+
+### Parameter-set Util
 
 Utility functions for reading arguments passed to the application via query parameters. Examples:
 
 ```typescript
+import { getParameterLastValue, getParameterAllValues, getBooleanOption, getColorOption } from 'mixed-reality-extension-util';
+
 // Get a string argument, with a default value
 const soundFilePath = getParameterLastValue(params, 'sf', 'alarm.ogg');
 
 // Get a string argument, with the default ''
 const name  = getParameterLastValue(params, 'name');
 
-// Get all the instances of a parameter as an array
+// Get all the instances of the query argument 'user' as an array
 const users = getParameterAllValues(params, 'user'))
 
 // Get a boolean parameter, defaulting to true
@@ -27,14 +33,16 @@ const modsOnly = getBooleanOption(params, 'mo', true);
 const userColor = getColorOption(params, 'col', '304050');
 ```
 
-## Playing Media
+### Playing Media
 
 A wrapper around the *MediaInstance* class, simplifying the action of stopping playback and changing the volume.
 An example for video, assuming *playingActor* is an actor already defined: 
 
 ```typescript
+import { PlayingMedia } from 'mixed-reality-extension-util';
+
 const args = { paused: true, volume: 0.5}
-const video = this.mediaAssets.createVideoStream(args.uri, { uri: userUri });
+const video = this.mediaAssets.createVideoStream('User video', { uri: userUri });
 let playingVideo = new PlayingMedia(
     playingActor.startVideoStream(video.id, args), args);
 
